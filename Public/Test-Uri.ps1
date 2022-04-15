@@ -1,4 +1,4 @@
-function Test-Plugins {
+function Test-Uri {
 	<#
 		.Synopsis
 			Testing my plugin classes
@@ -9,10 +9,20 @@ function Test-Plugins {
 		.Example
 			Test-Plugin
 	#>
-	[CmdletBinding(SupportsShouldProcess=$true)]
+	[CmdletBinding()]
+	Param(
+		[parameter(Mandatory=$true)]
+		[String]
+		$URI
+	)
+
 
 	$plugins = [TestUriPlugins]::GetInstance()
-	return $plugins
+	$UriObj = [URI]::new($URI)
+
+	$ret = $plugins.checkUri($UriObj)
+
+	return $ret
 
 	<#
 	echo "Status:  [$(New-Text "Success" -fg "Green")]"

@@ -35,7 +35,36 @@ class TestUriPlugins : System.Collections.Generic.List[PSObject]{
 
 
     [TestUriPlugins]Register($plugin){
+
+        if($plugin.getName() -eq $null){
+            throw "Plugin must have a name!"
+        }
+        if($plugin.getVersion() -eq $null){
+            throw "Plugin must have a version!"
+        }
+        if($plugin.getSchemes().count -eq 0){
+            throw "Plugin must have schemes configured!"
+        }
+
+        Write-Output "Registering plugin"
+
         $this.add($plugin)
         return $this
+    }
+
+
+    [boolean]checkUri([URI]$URI){
+        Write-Debug ("Checking URI Object: "+$URI.AbsoluteUri)
+        Write-Debug ("Looking for URI Scheme: "+$URI.Scheme)
+        foreach($item in $this){
+            foreach($scheme in $item.getSchemes()){
+                if($URI.Scheme -eq $scheme){
+                    Write-Debug ("Found plugin for scheme: "+$scheme)
+                    Write-Debug ("Using plugin: "+$item.getName())
+                    return $item.checkUri($URI)
+                }
+            }
+        }
+        throw "No plugin found to handle URI scheme!"
     }
 }
