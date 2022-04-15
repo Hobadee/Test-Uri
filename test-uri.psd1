@@ -18,7 +18,7 @@ CompatiblePSEditions = @('Core', 'Desktop')
 
 
 # Module information
-ModuleVersion = '0.0.1'
+ModuleVersion = '1.0.0'
 GUID = '6d0eb1a4-cdf5-44e0-bcf5-be974386a36f'
 Description = 'Test-Uri - Test various URIs for connectivity'
 
