@@ -1,10 +1,10 @@
-class URITesterPluginFTP : URITesterPlugin{
+class TestUriPluginFTP : TestUriPlugin{
     #
-    URITesterPluginFTP(){
+    TestUriPluginFTP(){
         $this.name = "FTP Plugin"
         $this.version = "0.0.1"
         $this.handler = "ftp"
     }
 }
 
-[URITesterPluginFTP]::new().register()
+[TestUriPluginFTP]::new().register()

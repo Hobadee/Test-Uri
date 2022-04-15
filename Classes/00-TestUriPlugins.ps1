@@ -10,31 +10,31 @@ Plugins are a class, but register with a simple "plugin::register()" at the end 
  #
  # Powershell doesn't have real singleton instances, so we fake it here.
  # Instantiate instance with:
- #  `$var = [URITesterPlugins]::GetInstance()`
+ #  `$var = [TestUriPlugins]::GetInstance()`
  #>
-class URITesterPlugins : System.Collections.Generic.List[PSObject]{
+class TestUriPlugins : System.Collections.Generic.List[PSObject]{
 
 
     # This hidden static variable stores our "singleton" instance
-	hidden static [URITesterPlugins] $_instance = [URITesterPlugins]::new()
+	hidden static [TestUriPlugins] $_instance = [TestUriPlugins]::new()
 
 
     <##
      # Singleton emulator
      # If instance is instantiated, return instance, else instantiate new instance and return that
      #
-     # @return URITesterPlugins "singleton" instance of URITesterPlugins
+     # @return TestUriPlugins "singleton" instance of TestUriPlugins
      #>
-	static [URITesterPlugins] GetInstance(){
-		return [URITesterPlugins]::_instance
+	static [TestUriPlugins] GetInstance(){
+		return [TestUriPlugins]::_instance
 	}
 
 
-	URITesterPlugins(){
+	TestUriPlugins(){
 	}
 
 
-    [URITesterPlugins]Register($plugin){
+    [TestUriPlugins]Register($plugin){
         $this.add($plugin)
         return $this
     }

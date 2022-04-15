@@ -1,10 +1,10 @@
-class URITesterPluginHTTP : URITesterPlugin{
+class TestUriPluginHTTP : TestUriPlugin{
     #
-    URITesterPluginHTTP(){
+    TestUriPluginHTTP(){
         $this.name = "HTTP Plugin"
         $this.version = "0.0.1"
         $this.handler = "http"
     }
 }
 
-[URITesterPluginHTTP]::new().register()
+[TestUriPluginHTTP]::new().register()

@@ -1,4 +1,4 @@
-class URITesterPlugin{
+class TestUriPlugin{
 
     [string]$Name
     [string]$version
@@ -7,7 +7,7 @@ class URITesterPlugin{
     <##
      # Powershell doesn't allow abstract classes or interfaces, so fake it by failing if we call directly
      #>
-    URITesterPlugin(){
+    TestUriPlugin(){
         #throw "This is an abstract class"
     }
 
@@ -15,8 +15,8 @@ class URITesterPlugin{
     <##
      # Register this plugin
      #>
-    [URITesterPlugin]register(){
-        [URITesterPlugins]::GetInstance().Register($this)
+    [TestUriPlugin]register(){
+        [TestUriPlugins]::GetInstance().Register($this)
         return $this
     }
 }

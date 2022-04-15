@@ -11,7 +11,7 @@ function Test-Plugins {
 	#>
 	[CmdletBinding(SupportsShouldProcess=$true)]
 
-	$plugins = [URITesterPlugins]::GetInstance()
+	$plugins = [TestUriPlugins]::GetInstance()
 	return $plugins
 
 	<#
