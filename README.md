@@ -13,9 +13,9 @@ For ease of testing, you may also run `make shell` to dump you into a shell with
 
 
 ## Installing
-Note that `make install` is **NOT** currently implemented.  Installation is currently manual.  In the future we will try to implement `make install`.
+`make install` should work on *NIX systems.  Installation on Windows is currently manual.
 
-To install, copy all the files in the "build" directory into a new folder in your PowerShell modules directory.
+To install manually, copy all the files in the "build" directory into a new folder in your PowerShell modules directory.  The Windows installation directory is `$HOME\Documents\PowerShell\Modules`
 
 
 ## Public functions

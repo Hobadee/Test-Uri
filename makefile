@@ -5,6 +5,9 @@ ifeq ($(OS),Windows_NT)
 	# Generic Windows settings
 	CMD_PWSH=C:\Windows\SysNative\WindowsPowerShell\v1.0\powershell.exe
 	CMD_DEL=del
+    CMD_MKDIR=
+    CMD_INSTALL=
+    DIR_INSTALL=
 	
 	# Architecture-specific settings
     # CCFLAGS += -D WIN32
@@ -22,6 +25,9 @@ else
 	# Generic *NIX settings
 	CMD_PWSH=pwsh
 	CMD_DEL=rm
+    CMD_MKDIR=mkdir -p
+    CMD_INSTALL=install
+    DIR_INSTALL=~/.local/share/powershell/Modules
 	
 	# Architecture-specific settings
     UNAME_S := $(shell uname -s)
@@ -51,6 +57,10 @@ shell: build-module doShell
 test: build-module doTest
 
 test-function: build-module doTestFunction
+
+install:
+	${CMD_MKDIR} $(DIR_INSTALL)/$(ONAME)
+	${CMD_INSTALL} ./$(ODIR)/* $(DIR_INSTALL)/$(ONAME)/
 
 build-module:
 	$(CMD_PWSH) -c 'Build-Module'
