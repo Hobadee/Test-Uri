@@ -11,18 +11,24 @@ function Test-Uri {
 	#>
 	[CmdletBinding()]
 	Param(
-		[parameter(Mandatory=$true)]
-		[String]
-		$URI
+		[parameter(Mandatory=$true, ParameterSetName='Test')]
+		[URI]$URI
+		,
+		[parameter(ParameterSetName='Info')]
+		[switch]$ListPlugins
 	)
 
-
 	$plugins = [TestUriPlugins]::GetInstance()
-	$UriObj = [URI]::new($URI)
 
-	$ret = $plugins.checkUri($UriObj)
-
-	return $ret
+	if($ListPlugins){
+		$plugins
+	}
+	elseif($URI -ne $null){
+		return $plugins.checkUri($URI)
+	}
+	else{
+		Write-Error "No URI given!"
+	}
 
 	<#
 	echo "Status:  [$(New-Text "Success" -fg "Green")]"
