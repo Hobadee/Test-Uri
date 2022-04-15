@@ -13,9 +13,9 @@ For ease of testing, you may also run `make shell` to dump you into a shell with
 
 
 ## Installing
-`make install` should work on *NIX systems.  Installation on Windows is currently manual.
+Install like most *NIX source; run `make && make test && make install`
 
-To install manually, copy all the files in the "build" directory into a new folder in your PowerShell modules directory.  The Windows installation directory is `$HOME\Documents\PowerShell\Modules`
+Installation on Windows is currently manual.  To install manually, copy all the files in the "build" directory into a new folder in your PowerShell modules directory.  The Windows installation directory is `$HOME\Documents\PowerShell\Modules`.  On *NIX, the installation directory is `~/.local/share/powershell/Modules`.
 
 
 ## Public functions
